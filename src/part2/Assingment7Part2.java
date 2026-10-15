@@ -1,6 +1,5 @@
 
 import java.util.Scanner;
-
 public static Scanner cin = new Scanner(System.in);
 
 public static int getContNumb (int contactCount){
@@ -16,7 +15,7 @@ public static int getContNumb (int contactCount){
 }
 public static int getMenuNumb (){
     int numb= cin.nextInt();
-    while (numb<1||numb>8){
+    while (numb<1||numb>7){
         System.out.println("Enter only the values --- listed in the menu—from 1 to 7. Try  again : ");
         numb= cin.nextInt();
 
@@ -34,19 +33,22 @@ public static void ShowContacts (String[] contacts, int contactCount) {
     for (int i=0;i<contactCount;i++){
         System.out.println((i+1) + ". "+ contacts[i]);
     }
+    System.out.println("Done!");
 }
-public static void Search (String[] contacts, int contactCount) {
-    System.out.println("Enter any key-word that can help find needed contact: \n ");
-    String searched=cin.nextLine();
-    boolean isContains;
-    System.out.println("matches found: \n");
-    for (int i=0,j=0;i<contactCount;i++){
-        isContains=contacts[i].contains(searched);
-        if (isContains ){
-            System.out.println(j+") "+i+". "+ contacts[i]);
-            j++;
+public static void Search(String[] contacts, int contactCount) {
+    System.out.println("Enter keyword:");
+    String searched = cin.nextLine();
+    int matches = 0;
+    for (int i = 0; i < contactCount; i++) {
+        if (contacts[i].toLowerCase().contains(searched.toLowerCase())) {
+            System.out.println((i + 1) + ". " + contacts[i]);
+            matches++;
         }
     }
+    if (matches == 0) {
+        System.out.println("No contacts found!");
+    }
+    System.out.println("Done!");
 }
 public static void Edit (String[] contacts, int contactCount) {
     System.out.println("Please enter the sequence number of the contact you would like to edit.  \n ");
@@ -106,10 +108,10 @@ static void main(String[] args) {
             break;
         case 5:
             delete(contacts,contactCount);
-            contactCount = 0;
             break;
         case 6:
             deleteALL(contacts, contactCount);
+            contactCount = 0;
             break;
         case 7:
             System.out.println("Thank you, bye ");
