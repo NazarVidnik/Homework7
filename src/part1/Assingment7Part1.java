@@ -57,7 +57,7 @@ static void main(String[] args)  {
     System.out.println("Sum of your array:"+arraySum(user_array));
     arrayLargest(user_array);
 
-    System.out.println("Please enter size for random array:");
+
     int randSize = getArraySize();
     int[] rand_arr= getRandomArray(randSize);
     arrayOutput(rand_arr);
